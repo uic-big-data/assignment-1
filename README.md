@@ -53,7 +53,7 @@ The normal behavior of OpenLayers (and any tile-based map service) is to access 
 #### Task 3
 In the ChartComponent, create a simple bar chart using D3 that uses the data read from the shadow tiles and displays the amount of shadow at the location hovered by the mouse. Notice that you will have to establish a communication between two sibling components: MapComponent and ChartComponent. There are [multiple](https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96) ways to achieve this. After completing this task, you should see something similar to the animation below:
 
-![Assignment 1 animation](chicago.png)
+![Assignment 1 Chicago animation](chicago.gif)
 
 ### Submission
 The delivery of the assignment will be done using GitHub Classes. You are free to use any external library for your assignment.
