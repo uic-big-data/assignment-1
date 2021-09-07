@@ -11,6 +11,7 @@ There are three tasks, and you are free to use the skeleton code provided. The s
 
 ```
 ng new shadow-maps
+cd shadow-maps
 ng generate component map
 ng generate component chart
 ```
