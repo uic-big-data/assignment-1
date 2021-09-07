@@ -5,7 +5,7 @@ Instructor: Fabio Miranda
 Course webpage: https://fmiranda.me/courses/cs594-fall-2021/
 
 ## Assignment 1: D3 and Angular
-The goal of this assignment is to get you familiar JavaScript / TypeScript, D3, Angular, development environment, and the assignment submission process. You will develop a web application to visualize the spatial distribution of accumulated shadows per season of the year. You can download the datasets [here](), and find more information [here](https://fmiranda.me/publications/shadow-accrual-maps/) and [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
+The goal of this assignment is to get you familiar JavaScript / TypeScript, D3, Angular, development environment, and the assignment submission process. You will develop a web application to visualize the spatial distribution of accumulated shadows per season of the year. You can download the datasets [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip), and find more information [here](https://fmiranda.me/publications/shadow-accrual-maps/) and [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
 
 There are three tasks, and you are free to use the skeleton code provided. The skeleton code is an Angular project with two components:
 
@@ -29,7 +29,7 @@ Create an [OpenLayers](https://openlayers.org/) map inside the MapComponent. The
 ![Assignment 1 map](map.png)
 
 #### Task 2
-Download the data shadow from [here]() and unzip it inside the ``src/assets/`` folder. There will be three new folders, each for a season of the year. Inside each season folder, you will find an hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file constains the **normalized** number of minutes a given point is under shadow.
+Download the data shadow from [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip) and unzip it inside the ``src/assets/`` folder. There will be three new folders, each for a season of the year. Inside each season folder, you will find an hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file contains the **normalized** number of minutes a given point is under shadow.
 
 In the MapComponent, create an [ImageLayer](https://openlayers.org/en/latest/apidoc/module-ol_layer_Image-ImageLayer.html) that accesses the data through a [RasterSource](https://openlayers.org/en/latest/apidoc/module-ol_source_Raster-RasterSource.html). A RasterSource is nothing more than a source that transforms input pixel values (e.g., number of minutes under shadow) to output pixel values (e.g., number of minutes under shadow using a colorscale). For example:
 ```
@@ -71,4 +71,4 @@ git push
 ### Grading
 The code will be evaluated on Firefox. Your submission will be graded according to the quality of the results and interactions.
 
-To get a C on the assignment, your application should display a map of Chicago. To get a B on the assignment, your application should visualize at least one shadow accumulation dataset (i.e., of at least one season). To get an A on the assignment, the application must visualize all shadow datasets, and update the bar chart so that it shows the accumulated shadow at the location hovered by the mouse.
+To get a C on the assignment, your application should display a map of Chicago. To get a B on the assignment, your application should visualize at least one shadow accumulation dataset (i.e., of at least one season). To get an A on the assignment, the application must update the bar chart so that it shows the accumulated shadow at the location hovered by the mouse.
