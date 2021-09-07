@@ -5,7 +5,9 @@ Instructor: Fabio Miranda
 Course webpage: https://fmiranda.me/courses/cs594-fall-2021/
 
 ## Assignment 1: D3 and Angular
-The goal of this assignment is to get you familiar JavaScript / TypeScript, D3, Angular, development environment, and the assignment submission process. You will develop a web application to visualize the spatial distribution of accumulated shadows per season of the year. You can download the datasets [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip), and find more information [here](https://fmiranda.me/publications/shadow-accrual-maps/) and [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
+The goal of this assignment is to get you familiar JavaScript / TypeScript, D3, Angular, development environment, and the assignment submission process. You will develop a web application to visualize the spatial distribution of accumulated shadows for each season of the year. The accumulated shadows were computed for three days of the year: June 21 (summer solstice), September 22 (autumnal equinox) and December 21 (winter solstice). Shadows can be greatly distorted when they are near the horizon, so all the shadows in the dataset are estimated from one and a half hours after sunrise to one and a half hours before sunset.
+
+You can download the datasets [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip), and find more information [here](https://fmiranda.me/publications/shadow-accrual-maps/) and [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
 
 There are three tasks, and you are free to use the skeleton code provided. The skeleton code is an Angular project with two components:
 
@@ -35,7 +37,7 @@ Create an [OpenLayers](https://openlayers.org/) map inside the MapComponent. The
 
 
 #### Task 2
-Download the shadow data from [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip) and unzip it inside the ``src/assets/`` folder. There will be three new folders, each for a season of the year. Inside each season folder, you will find an hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file contains the **normalized** number of minutes a given point is under shadow. More information [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
+Download the shadow data from [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip) and unzip it inside the ``src/assets/`` folder. There will be three new folders, each corresponding to a season of the year. Inside each season folder, you will find a hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file contains the **normalized** number of minutes a given point is under shadow. More information [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
 
 In the MapComponent, create an [ImageLayer](https://openlayers.org/en/latest/apidoc/module-ol_layer_Image-ImageLayer.html) that accesses the data through a [RasterSource](https://openlayers.org/en/latest/apidoc/module-ol_source_Raster-RasterSource.html). A RasterSource is nothing more than a source that transforms input pixel values (e.g., number of minutes under shadow) to output pixel values (e.g., number of minutes under shadow using a colorscale). For example:
 ```typescript
@@ -67,7 +69,7 @@ After completing this task, you should see something similar to the image below:
 </p>
 
 #### Task 3
-In the ChartComponent, create a simple bar chart using D3 that uses the data read from the shadow tiles and displays the amount of shadow at the location hovered by the mouse. Notice that you will have to establish a communication between two sibling components: MapComponent and ChartComponent. There are [multiple](https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96) ways to achieve this. After completing this task, you should see something similar to the animation below:
+In the ChartComponent, create a simple bar chart using D3 that uses the data read from the shadow tiles and displays the amount of shadow at the location hovered by the mouse. Pay attention that the tiles store **normalized** values, so you will have to multiply those values by the maximum number of minutes a point can be under shadow (360 during winter, 540 during spring/fall and 720 during summer). Notice also that you will have to establish a communication between two sibling components: MapComponent and ChartComponent. There are [multiple](https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96) ways to achieve this. After completing this task, you should see something similar to the animation below:
 
 ![Assignment 1 Chicago animation](chicago.gif)
 
