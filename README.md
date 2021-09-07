@@ -22,15 +22,20 @@ The code makes use of [D3.js](https://d3js.org/) and [OpenLayers](https://openla
 npm install --save-dev d3 ol @types/d3 @types/ol
 ```
 
+Even if using the skeleton code, you should run ```npm install``` inside the ```shadow-maps``` folder.
+
 ### Tasks
 
 #### Task 1
 Create an [OpenLayers](https://openlayers.org/) map inside the MapComponent. The map should contain one [TileLayer](https://openlayers.org/en/latest/apidoc/module-ol_layer_Tile-TileLayer.html) (e.g., ``new OSM()``, but you are free to use [tiles accessed through URLs](https://openlayers.org/en/latest/examples/xyz.html)). Make sure to set the view so that it is centered in Chicago (i.e., ``center: transform([-87.6298, 41.8781], 'EPSG:4326', 'EPSG:3857')``). After completing this task, you should see something similar to the image below:
 
-![Assignment 1 map](map.png)
+<p align="center">
+  <img alt="Assignment 1 map" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/map.png" style="max-width: 50%" />
+</p>
+
 
 #### Task 2
-Download the data shadow from [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip) and unzip it inside the ``src/assets/`` folder. There will be three new folders, each for a season of the year. Inside each season folder, you will find an hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file contains the **normalized** number of minutes a given point is under shadow.
+Download the shadow data from [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip) and unzip it inside the ``src/assets/`` folder. There will be three new folders, each for a season of the year. Inside each season folder, you will find an hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file contains the **normalized** number of minutes a given point is under shadow. More information [here](https://github.com/VIDA-NYU/shadow-accrual-maps/).
 
 In the MapComponent, create an [ImageLayer](https://openlayers.org/en/latest/apidoc/module-ol_layer_Image-ImageLayer.html) that accesses the data through a [RasterSource](https://openlayers.org/en/latest/apidoc/module-ol_source_Raster-RasterSource.html). A RasterSource is nothing more than a source that transforms input pixel values (e.g., number of minutes under shadow) to output pixel values (e.g., number of minutes under shadow using a colorscale). For example:
 ```typescript
@@ -46,10 +51,11 @@ operation: function(pixels: any, data: any): any {
 },
 ```
 
+The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level (i.e., when the user zooms in, higher resolution tiles are used); since we only have tiles for **one** zoom level, we must specify to to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``. After completing this task, you should see something similar to the image below:
 
-The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level; since we only have tiles for **one** zoom level, we must specify to to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``. After completing this task, you should see something similar to the image below:
-
-![Assignment 1 shadows](shadows.png)
+<p align="center">
+  <img alt="Assignment 1 shadows" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/shadows.png" style="max-width: 50%" />
+</p>
 
 #### Task 3
 In the ChartComponent, create a simple bar chart using D3 that uses the data read from the shadow tiles and displays the amount of shadow at the location hovered by the mouse. Notice that you will have to establish a communication between two sibling components: MapComponent and ChartComponent. There are [multiple](https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96) ways to achieve this. After completing this task, you should see something similar to the animation below:
