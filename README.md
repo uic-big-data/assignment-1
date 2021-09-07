@@ -45,7 +45,7 @@ operation: function(pixels: any, data: any): any {
   pixel[0]=66*val;
   pixel[1]=113*val;
   pixel[2]=143*val;
-  pixel[3]=255*0;
+  pixel[3]=255*val;
           
   return pixel;
 },
