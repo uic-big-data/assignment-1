@@ -30,7 +30,7 @@ Even if using the skeleton code, you should run ```npm install``` inside the ```
 Create an [OpenLayers](https://openlayers.org/) map inside the MapComponent. The map should contain one [TileLayer](https://openlayers.org/en/latest/apidoc/module-ol_layer_Tile-TileLayer.html) (e.g., ``new OSM()``, but you are free to use [tiles accessed through URLs](https://openlayers.org/en/latest/examples/xyz.html)). Make sure to set the view so that it is centered in Chicago (i.e., ``center: transform([-87.6298, 41.8781], 'EPSG:4326', 'EPSG:3857')``). After completing this task, you should see something similar to the image below:
 
 <p align="center">
-  <img alt="Assignment 1 map" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/map.png" style="max-width: 50%" />
+  <img alt="Assignment 1 map" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/map.png" style="width: 50%;" />
 </p>
 
 
@@ -54,7 +54,7 @@ operation: function(pixels: any, data: any): any {
 The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level (i.e., when the user zooms in, higher resolution tiles are used); since we only have tiles for **one** zoom level, we must specify to to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``. After completing this task, you should see something similar to the image below:
 
 <p align="center">
-  <img alt="Assignment 1 shadows" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/shadows.png" style="max-width: 50%" />
+  <img alt="Assignment 1 shadows" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/shadows.png" style="width: 50%;" />
 </p>
 
 #### Task 3
