@@ -51,12 +51,12 @@ operation: function(pixels: any, data: any): any {
 },
 ```
 
-The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level (i.e., when the user zooms in, higher resolution tiles are used); since we only have tiles for **one** zoom level, we must specify to to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``.
+The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level (i.e., when the user zooms in, higher resolution tiles are used); since we only have tiles for **one** zoom level, we must specify to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``.
 
 In order to handle mouse movements, make yourself familiar with the [MapBrowserEvents](https://openlayers.org/en/latest/apidoc/module-ol_MapBrowserEvent-MapBrowserEvent.html). You can register a listener to a map event with:
 ```typescript
 this.map.on('pointermove', (evt: any) => {
-  //
+  // ...
 });
 ```
 
@@ -74,7 +74,7 @@ In the ChartComponent, create a simple bar chart using D3 that uses the data rea
 ### Submission
 The delivery of the assignment will be done using GitHub Classes. You are free to use any external library for your assignment.
 
-[git](https://en.wikipedia.org/wiki/Git) is a version control system, designed to help developers track different versions of your code, synchronize them across different machines, and collaborate with others. Follow the instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install git on your computer. [GitHub](https://github.com/) is a website that supports git as a service. [This](https://guides.github.com/activities/hello-world/) a nice tutorial on how to get started with git and GitHub.
+[git](https://en.wikipedia.org/wiki/Git) is a version control system, designed to help developers track different versions of your code, synchronize them across different machines, and collaborate with others. Follow the instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install git on your computer. [GitHub](https://github.com/) is a website that supports git as a service. [This](https://guides.github.com/activities/hello-world/) is a nice tutorial on how to get started with git and GitHub.
 
 We will provide a GitHub Classroom link for each assignment. Follow the link to create a repository. Use `git clone` to get a local copy of the newly created repository. After writing your code, you can push your modifications to the server using `git commit` followed by `git push`. For example, if your username is `uic-user`:
 
