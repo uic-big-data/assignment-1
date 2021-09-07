@@ -51,7 +51,16 @@ operation: function(pixels: any, data: any): any {
 },
 ```
 
-The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level (i.e., when the user zooms in, higher resolution tiles are used); since we only have tiles for **one** zoom level, we must specify to to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``. After completing this task, you should see something similar to the image below:
+The normal behavior of OpenLayers (and any tile-based map service) is to access tiles based on the current zoom level (i.e., when the user zooms in, higher resolution tiles are used); since we only have tiles for **one** zoom level, we must specify to to the RasterSource to **only** access data at that particular zoom level. You can achieve this by creating an [XYZ source](https://openlayers.org/en/latest/examples/xyz.html) with ``tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15})``.
+
+In order to handle mouse movements, make yourself familiar with the [MapBrowserEvents](https://openlayers.org/en/latest/apidoc/module-ol_MapBrowserEvent-MapBrowserEvent.html). You can register a listener to a map event with:
+```typescript
+this.map.on('pointermove', (evt: any) => {
+  //
+});
+```
+
+After completing this task, you should see something similar to the image below:
 
 <p align="center">
   <img alt="Assignment 1 shadows" src="https://raw.githubusercontent.com/uic-big-data/fall-2021-assignment-1/main/shadows.png" style="width: 50%;" />
