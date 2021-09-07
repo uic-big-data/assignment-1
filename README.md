@@ -32,7 +32,7 @@ Create an [OpenLayers](https://openlayers.org/) map inside the MapComponent. The
 Download the data shadow from [here](https://github.com/uic-big-data/fall-2021-assignment-1/blob/main/chicago-shadows.zip) and unzip it inside the ``src/assets/`` folder. There will be three new folders, each for a season of the year. Inside each season folder, you will find an hierarchy of folders following [slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames) (i.e., filename format is ``/zoom/x/y.png`` for a given zoom level, x and y coordinates). **Notice that there is only one zoom level for each season**. Each pixel of a .png file contains the **normalized** number of minutes a given point is under shadow.
 
 In the MapComponent, create an [ImageLayer](https://openlayers.org/en/latest/apidoc/module-ol_layer_Image-ImageLayer.html) that accesses the data through a [RasterSource](https://openlayers.org/en/latest/apidoc/module-ol_source_Raster-RasterSource.html). A RasterSource is nothing more than a source that transforms input pixel values (e.g., number of minutes under shadow) to output pixel values (e.g., number of minutes under shadow using a colorscale). For example:
-```
+```typescript
 operation: function(pixels: any, data: any): any {
   let pixel = [0,0,0,0];
   let val = pixels[0][3]/255.0;
