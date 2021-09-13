@@ -86,6 +86,43 @@ git commit -am "submission"
 git push
 ```
 
+### Hints and tips
+
+In order to only use tiles at zoom level 15, use the following when creating the ``RasterSource``:
+```typescript
+let source = new RasterSource({
+  sources: [
+    new XYZ({
+      url: environment.filesurl+element.path,
+      tileGrid: createXYZ({tileSize: 256, minZoom: 15, maxZoom: 15}),
+    })
+  ],
+  operation: function(pixels: any, data: any): any {
+    //...
+  },
+});
+let layer = new ImageLayer({
+  source: source,
+  zIndex: 1,
+});
+```
+
+To track the movement of the mouse, make sure you check the ``pointermove`` event:
+```typescript
+this.map.on('pointermove', (evt: any) => {
+  this.mousePosition = evt.pixel;
+  this.map.render();
+});
+```
+
+Change the [zIndex](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) so that the shadow layer is rendered *on top* of the map layer:
+```typescript
+let layer = new ImageLayer({
+  source: source,
+  zIndex: 1,
+});
+```
+
 ### Grading
 The code will be evaluated on Firefox. Your submission will be graded according to the quality of the results and interactions.
 
