@@ -1,8 +1,8 @@
-# CS594 - Big Data Visualization & Analytics (Fall 2021)
+# CS524 - Big Data Visualization & Analytics
 
 Instructor: Fabio Miranda
 
-Course webpage: https://fmiranda.me/courses/cs594-fall-2021/
+Course webpage: https://fmiranda.me/courses/
 
 ## Assignment 1: D3 and Angular
 The goal of this assignment is to get you familiar with JavaScript / TypeScript, D3, Angular, the development environment, and the assignment submission process. You will develop a web application to visualize the spatial distribution of accumulated shadows for each season of the year. The accumulated shadows were computed for three days of the year: June 21 (summer solstice), September 22 (autumnal equinox) and December 21 (winter solstice). Shadows can be greatly distorted when they are near the horizon, so all the shadows in the dataset are estimated from one and a half hours after sunrise to one and a half hours before sunset.
