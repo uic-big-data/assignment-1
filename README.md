@@ -123,6 +123,22 @@ let layer = new ImageLayer({
 });
 ```
 
+In order to get the pixel value, you should use ``getImageData`` inside a ``postrender`` event, similar to:
+```typescript
+layer.on('postrender', (event: any) => {
+        var ctx = event.context;
+        var pixelRatio = event.frameState.pixelRatio;
+        if (this.mousePosition) {
+          var x = this.mousePosition[0] * pixelRatio;
+          var y = this.mousePosition[1] * pixelRatio;
+          var data = ctx.getImageData(x, y, 1, 1).data;
+          var value = (data[3] /255) * element.max;
+          this.values[element.name] = value;
+          this.updateValues();
+        }
+      });
+``` 
+
 ### Grading
 The code will be evaluated on Firefox. Your submission will be graded according to the quality of the results and interactions.
 
